@@ -11,7 +11,10 @@ namespace BankOcrKata {
         public bool F { get; set; }
         public bool G { get; set; }
 
-        private int _binValueAsInt {
+        /// <summary>
+        /// convert digit binary value into decimal value.
+        /// </summary>
+        private int _binaryValueAsInt {
             get {
                 int[] intValue = new int[1];
                 BitArray bitArray = new BitArray(new bool[] { G, F, E, D, C, B, A });
@@ -21,8 +24,13 @@ namespace BankOcrKata {
             }
         }
 
+        /// <summary>
+        /// Converts hex values of digit into number.
+        /// Return null for NaN values.
+        /// </summary>
+        /// <returns></returns>
         public int? ConvertToInt() {
-            switch (_binValueAsInt) {
+            switch (_binaryValueAsInt) {
                 case 126:
                 return 0;
 

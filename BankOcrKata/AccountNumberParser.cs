@@ -9,6 +9,11 @@ namespace BankOcrKata {
         private const int DIGIT_COLS = 3;
         private const int LINES_NUMBERS = 3;
 
+        /// <summary>
+        /// Basing on input validates and parse account number into string. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string ParseAccountNumber(string[] input) {
             StringBuilder result = new StringBuilder();
 
@@ -23,6 +28,11 @@ namespace BankOcrKata {
             return result.ToString();
         }
 
+        /// <summary>
+        /// Basing on input parses account number. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private List<OcrSign> getDigits(string[] input) {
             var ocrDigits = new List<OcrSign>();
 
@@ -46,6 +56,10 @@ namespace BankOcrKata {
             return ocrDigits;
         }
 
+        /// <summary>
+        /// Valdates given input according to rules mentioned in kata: http://codingdojo.org/kata/BankOCR/#problem-description
+        /// </summary>
+        /// <param name="input"></param>
         private void validateInput(string[] input) {
             char[] charsToTrim = new char[] { '\n', '\r' };
 

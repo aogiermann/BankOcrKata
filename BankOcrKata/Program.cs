@@ -11,8 +11,10 @@ namespace BankOcrKata {
                 IBankAccountManager bankAccountManager = new BankAccountManager(new AccountNumberParser(), new CheckSumValidator());
                 ReadOnlyCollection<BankAccount> accounts = bankAccountManager.ManageAccounts(args[0]);
 
-                foreach (BankAccount account in accounts) {
-                    Console.WriteLine(account.ToString());
+                if (accounts != null) {
+                    foreach (BankAccount account in accounts) {
+                        Console.WriteLine(account.ToString());
+                    }
                 }
             }
             else {

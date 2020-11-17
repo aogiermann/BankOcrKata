@@ -18,6 +18,11 @@ namespace BankOcrKata {
             _checkSumValidator = checkSumValidator;
         }
 
+        /// <summary>
+        /// Manages and returns valid account numbers.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public BankAccount ManageAccount(string[] input) {
             string accountNumber = String.Empty;
             bool isValid = false;
@@ -28,6 +33,11 @@ namespace BankOcrKata {
             return new BankAccount() { AccountNumber = accountNumber, IsValid = isValid };
         }
 
+        /// <summary>
+        /// manages and returns accounts for given file.
+        /// </summary>
+        /// <param name="filePath">File containing accounts numbers.</param>
+        /// <returns></returns>
         public ReadOnlyCollection<BankAccount> ManageAccounts(string filePath) {
 
             if (File.Exists(filePath)) {
