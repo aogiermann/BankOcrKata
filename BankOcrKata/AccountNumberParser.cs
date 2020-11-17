@@ -42,18 +42,23 @@ namespace BankOcrKata {
 
                 ocrDigit.A = input[0].ToCharArray()[digitStart + 1] == '_';
 
-                ocrDigit.F = input[1].ToCharArray()[digitStart] == '|';
-                ocrDigit.G = input[1].ToCharArray()[digitStart + 1] == '_';
-                ocrDigit.B = input[1].ToCharArray()[digitStart + 2] == '|';
-
-                ocrDigit.E = input[2].ToCharArray()[digitStart] == '|';
-                ocrDigit.D = input[2].ToCharArray()[digitStart + 1] == '_';
-                ocrDigit.C = input[2].ToCharArray()[digitStart + 2] == '|';
+                (ocrDigit.F, ocrDigit.G, ocrDigit.B) = getBits(input[1].ToCharArray(), digitStart);
+                (ocrDigit.E, ocrDigit.D, ocrDigit.C) = getBits(input[2].ToCharArray(), digitStart);
 
                 ocrDigits.Add(ocrDigit);
             }
 
             return ocrDigits;
+
+            static (bool, bool, bool) getBits(char[] line, int digitStart) {
+                bool[] bits = new bool[3];
+
+                bits[0] = line[digitStart] == '|';
+                bits[1] = line[digitStart + 1] == '_';
+                bits[2] = line[digitStart + 2] == '|';
+
+                return (bits[0], bits[1], bits[2]);
+            }
         }
 
         /// <summary>
