@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ConsoleApp5": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\input.txt"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
