@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankOcrKata {
     public class BankAccountManager : IBankAccountManager {
+        
         const int LINES_BATCH_SIZE = 4;
 
         private readonly IAccountNumberParser _accountNumberParser;
@@ -24,8 +23,8 @@ namespace BankOcrKata {
         /// <param name="input"></param>
         /// <returns></returns>
         public BankAccount ManageAccount(string[] input) {
-            string accountNumber = String.Empty;
-            bool isValid = false;
+            string accountNumber;
+            bool isValid;
 
             accountNumber = _accountNumberParser.ParseAccountNumber(input);
             isValid = _checkSumValidator.ValidateCheckSum(accountNumber);
@@ -34,26 +33,25 @@ namespace BankOcrKata {
         }
 
         /// <summary>
-        /// manages and returns accounts for given file.
+        /// Manages and returns accounts for given file.
         /// </summary>
         /// <param name="filePath">File containing accounts numbers.</param>
         /// <returns></returns>
         public ReadOnlyCollection<BankAccount> ManageAccounts(string filePath) {
 
             if (File.Exists(filePath)) {
-                string[] input = File.ReadAllText(filePath).Split('\n');
+                string[] input = File.ReadAllText(filePath).Split(Environment.NewLine);
 
                 List<BankAccount> accounts = new List<BankAccount>();
 
                 for (int i = 0; i < input.Length / LINES_BATCH_SIZE; i++) {
-                    //Taking 3 needed lines out of 4 from each entry.
-                    string[] accountInput = input.Skip(i * LINES_BATCH_SIZE).Take(LINES_BATCH_SIZE - 1).ToArray();
+                    string[] accountInput = input.Skip(i * LINES_BATCH_SIZE).Take(LINES_BATCH_SIZE).ToArray();
 
                     try {
                         accounts.Add(ManageAccount(accountInput));
                     }
                     catch (Exception ex) {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine($"Exception during parse: {ex.Message}");
                     }
                 }
 

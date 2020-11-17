@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using BankOcrKata;
 
 namespace BankOcrTests {
@@ -30,17 +28,17 @@ namespace BankOcrTests {
 
         [TestMethod]
         public void ValidateCheckSum_InputIsNan_ThrowsEx() {
-            var ex = Assert.ThrowsException<Exception>(() =>  _checkSumValidator.ValidateCheckSum("2222AB222"), "Invalid account number format!");
+            Assert.ThrowsException<Exception>(() =>  _checkSumValidator.ValidateCheckSum("2222AB222"), "Invalid account number format!");
         }
 
         [TestMethod]
         public void ValidateCheckSum_InputIsTooLong_ThrowsEx() {
-            var ex = Assert.ThrowsException<Exception>(() => _checkSumValidator.ValidateCheckSum("12234567890"), "Invalid account number format!");
+            Assert.ThrowsException<Exception>(() => _checkSumValidator.ValidateCheckSum("12234567890"), "Invalid account number format!");
         }
 
         [TestMethod]
         public void ValidateCheckSum_InputIsTooShort_ThrowsEx() {
-            var ex = Assert.ThrowsException<Exception>(() => _checkSumValidator.ValidateCheckSum("1223"), "Invalid account number format!");
+            Assert.ThrowsException<Exception>(() => _checkSumValidator.ValidateCheckSum("1223"), "Invalid account number format!");
         }
     }
 }

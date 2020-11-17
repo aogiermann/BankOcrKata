@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ConsoleApp5": {
+    "BankOcrKata": {
       "commandName": "Project",
       "commandLineArgs": ".\\input.txt"
     },

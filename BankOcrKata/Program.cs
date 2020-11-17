@@ -13,12 +13,15 @@ namespace BankOcrKata {
 
                 if (accounts != null) {
                     foreach (BankAccount account in accounts) {
-                        Console.WriteLine(account.ToString());
+                        Console.WriteLine(account);
                     }
+                }
+                else {
+                    Console.WriteLine("No accounts found in input file.");
                 }
             }
             else {
-                Console.WriteLine("Lack of input file or file does't exists!");
+                Console.WriteLine("Lack of input file or file doesn't exist!");
             }
 
             Console.ReadLine();

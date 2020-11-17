@@ -14,7 +14,7 @@ namespace BankOcrKata {
         /// <param name="accountNumber"></param>
         /// <returns></returns>
         public bool ValidateCheckSum(string accountNumber) {
-            if (accountNumber.Length != 9 || !Regex.IsMatch(accountNumber, "^[0-9]*$")) {
+            if (!Regex.IsMatch(accountNumber, "^[0-9]{9}$")) {
                 throw new Exception("Invalid account number format!");
             }
 

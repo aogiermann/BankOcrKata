@@ -2,7 +2,8 @@
 
 namespace BankOcrKata {
     internal class OcrSign {
-        //each property represents a BIT like in Seven-digit display.
+
+        //Each property represents a BIT like in Seven-digit display.
         public bool A { get; set; }
         public bool B { get; set; }
         public bool C { get; set; }
@@ -12,7 +13,7 @@ namespace BankOcrKata {
         public bool G { get; set; }
 
         /// <summary>
-        /// convert digit binary value into decimal value.
+        /// Convert digit binary value into decimal value.
         /// </summary>
         private int _binaryValueAsInt {
             get {
@@ -30,41 +31,19 @@ namespace BankOcrKata {
         /// </summary>
         /// <returns></returns>
         public int? ConvertToInt() {
-            switch (_binaryValueAsInt) {
-                case 126:
-                return 0;
-
-                case 48:
-                return 1;
-
-                case 109:
-                return 2;
-
-                case 121:
-                return 3;
-
-                case 51:
-                return 4;
-
-                case 91:
-                return 5;
-
-                case 95:
-                return 6;
-
-                case 112:
-                return 7;
-
-                case 127:
-                return 8;
-
-                case 123:
-                return 9;
-
-                default:
-                //return null for NaN values (A, B, C...)
-                return null;
-            }
+            return _binaryValueAsInt switch {
+                126 => 0,
+                48 => 1,
+                109 => 2,
+                121 => 3,
+                51 => 4,
+                91 => 5,
+                95 => 6,
+                112 => 7,
+                127 => 8,
+                123 => 9,
+                _ => null,//return null for NaN values (A, B, C...)
+            };
         }
 
         public override string ToString() {

@@ -1,5 +1,6 @@
 ﻿namespace BankOcrKata {
     public interface ICheckSumValidator {
+
         /// <summary>
         /// Validates given account number.
         /// </summary>

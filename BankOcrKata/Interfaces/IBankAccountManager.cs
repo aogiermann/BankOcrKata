@@ -2,6 +2,7 @@
 
 namespace BankOcrKata {
     public interface IBankAccountManager {
+
         /// <summary>
         /// Returns single account.
         /// </summary>
